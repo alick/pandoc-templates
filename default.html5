@@ -14,6 +14,12 @@ $endif$
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/css/bootstrap-combined.min.css">
+$if(title)$
+  <style type="text/css">
+    header { text-align: center; }
+  </style>
+$endif$
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
 $endif$
@@ -48,11 +54,27 @@ $endif$
 </header>
 $endif$
 $if(toc)$
-<nav id="$idprefix$TOC">
-$toc$
-</nav>
-$endif$
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <!-- Sidebar content -->
+      <div class="well sidebar-nav">
+        <nav id="$idprefix$TOC">
+        $toc$
+        </nav>
+      </div>
+    </div>
+    <div class="span9">
+      <!-- Body content -->
 $body$
+    </div>
+  </div>
+</div>
+$else$
+<div class="container" style="width: 60%;">
+$body$
+</div>
+$endif$
 $for(include-after)$
 $include-after$
 $endfor$
